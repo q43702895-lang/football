@@ -1,0 +1,862 @@
+<html lang="en" class="antialiased selection:bg-[#00FF87] selection:text-black scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRIKER | Football Intelligence Hub</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Oswald:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+        /* Base typography setup mimicking standard CSS reset but inline */
+        :root {
+            --font-display: 'Oswald', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: #0D0D0F;
+            color: #FFFFFF;
+        }
+
+        .font-display {
+            font-family: var(--font-display);
+        }
+
+        .font-mono {
+            font-family: var(--font-mono);
+        }
+
+        /* Hide scrollbar for horizontal scroll areas */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Subtle gradients & utility styles */
+        .glass-panel {
+            background: rgba(30, 33, 48, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .card-surface {
+            background-color: #1A1D29;
+            border: 1px solid rgba(255, 255, 255, 0. 03);
+        }
+
+        .text-muted {
+            color: #A0A4B8;
+        }
+
+        .accent-green {
+            color: #00FF87;
+        }
+
+        .accent-red {
+            color: #E63946;
+        }
+
+        .bg-accent-green {
+            background-color: #00FF87;
+            color: #0D0D0F;
+        }
+
+        /* Image overlay gradient */
+        .hero-gradient {
+            background: linear-gradient(to top, #0D0D0F 0%, rgba(13, 13, 15, 0.8) 40%, rgba(13, 13, 15, 0) 100%);
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- Ticker / Top Bar -->
+    <div
+        class="bg-[#E63946] text-white py-1 flex overflow-hidden whitespace-nowrap items-center text-xs font-semibold tracking-widest uppercase">
+        <div class="flex gap-12 px-4 animate-[marquee_20s_linear_infinite]" style="animation: none;">
+            <!-- Animation class disabled for static display, using flex scroll -->
+            <div class="flex items-center gap-8 w-full overflow-x-auto scrollbar-hide py-0.5">
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-white rounded-full"></span>FT: MAN UTD
+                    2 - 1 CHELSEA</span>
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-white rounded-full"></span>FT: REAL
+                    MADRID 3 - 0 PSG</span>
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-white rounded-full"></span>LIVE 74':
+                    BAYERN 1 - 1 BVB</span>
+                <span class="flex items-center gap-2"><span
+                        class="w-1.5 h-1.5 bg-white rounded-full text-white/50"></span>UPCOMING: ARSENAL vs
+                    LIVERPOOL</span>
+                <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-white rounded-full"></span>LATEST:
+                    MBAPPE AGREES TERMS</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 glass-panel border-b-0 border-white/10">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="font-display text-2xl tracking-tighter uppercase flex items-center gap-1">
+                STRIKER
+                <span class="w-2 h-2 rounded-full bg-accent-green mb-1"></span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-muted">
+                <a href="#"
+                    class="text-white relative after:absolute after:bottom-[-22px] after:left-0 after:w-full after:h-[2px] after:bg-accent-green">News</a>
+                <a href="#" class="hover:text-white transition-colors flex items-center gap-1">Transfers <span
+                        class="w-1.5 h-1.5 rounded-full bg-accent-red"></span></a>
+                <a href="#" class="hover:text-white transition-colors">Stats</a>
+                <a href="#" class="hover:text-white transition-colors">Clubs</a>
+                <a href="#" class="hover:text-white transition-colors">Players</a>
+                <a href="#" class="hover:text-white transition-colors">Records</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4 md:gap-6">
+                <button class="text-white hover:text-accent-green transition-colors">
+                    <iconify-icon icon="solar:magnifer-linear" class="text-xl"
+                        style="stroke-width: 1.5;"></iconify-icon>
+                </button>
+                <button class="hidden md:block text-white hover:text-accent-green transition-colors">
+                    <iconify-icon icon="solar:user-circle-linear" class="text-xl"
+                        style="stroke-width: 1.5;"></iconify-icon>
+                </button>
+                <a href="#"
+                    class="bg-accent-green font-semibold text-xs md:text-sm px-4 py-2 rounded-full hover:bg-white transition-colors tracking-wide uppercase">
+                    Subscribe
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 w-full max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8 flex flex-col gap-10">
+
+        <!-- Live Match Widget (Horizontal Scroll) -->
+        <section>
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-display text-xl tracking-tight uppercase flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-accent-red animate-pulse"></span>
+                    Live Match Centre
+                </h2>
+                <a href="#"
+                    class="text-xs text-muted hover:text-white font-medium uppercase tracking-wider flex items-center gap-1">
+                    All Matches <iconify-icon icon="solar:alt-arrow-right-linear"></iconify-icon>
+                </a>
+            </div>
+
+            <div class="flex overflow-x-auto gap-4 pb-4 scrollbar-hide snap-x">
+                <!-- Match Card 1 (Live) -->
+                <div
+                    class="card-surface rounded-xl p-4 min-w-[280px] md:min-w-[300px] snap-start shrink-0 cursor-pointer hover:border-white/20 transition-colors">
+                    <div class="flex justify-between items-center mb-3">
+                        <span
+                            class="text-[10px] text-muted uppercase tracking-widest font-semibold flex items-center gap-1">
+                            <iconify-icon icon="solar:cup-first-linear"></iconify-icon> Champions League
+                        </span>
+                        <span
+                            class="text-xs accent-green bg-[#00FF87]/10 px-2 py-0.5 rounded flex items-center gap-1 font-mono font-semibold">
+                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full animate-pulse"></span>74'
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2 font-mono tabular-nums text-lg font-medium">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[8px] text-black font-display">
+                                    <img src="./removebg.png" width="100%" height="100%" alt=""></div>
+                                <span class="font-sans font-semibold text-base">R. Madrid</span>
+                            </div>
+                            <span>3</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-blue-900 rounded-full flex items-center justify-center text-[8px] text-white font-display">
+                                    PSG</div>
+                                <span class="font-sans font-semibold text-base text-muted">PSG</span>
+                            </div>
+                            <span class="text-muted">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Match Card 2 (Upcoming) -->
+                <div
+                    class="card-surface rounded-xl p-4 min-w-[280px] md:min-w-[300px] snap-start shrink-0 opacity-70 hover:opacity-100 transition-opacity">
+                    <div class="flex justify-between items-center mb-3">
+                        <span
+                            class="text-[10px] text-muted uppercase tracking-widest font-semibold flex items-center gap-1">
+                            <iconify-icon icon="solar:flag-linear"></iconify-icon> Premier League
+                        </span>
+                        <span class="text-xs text-muted bg-white/5 px-2 py-0.5 rounded font-mono font-medium">
+                            20:00
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2 font-mono tabular-nums text-lg font-medium text-muted">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-[8px] text-white font-display">
+                                    ARS</div>
+                                <span class="font-sans font-semibold text-base">Arsenal</span>
+                            </div>
+                            <span>-</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-red-800 rounded-full flex items-center justify-center text-[8px] text-white font-display">
+                                    LIV</div>
+                                <span class="font-sans font-semibold text-base">Liverpool</span>
+                            </div>
+                            <span>-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Match Card 3 (FT) -->
+                <div class="card-surface rounded-xl p-4 min-w-[280px] md:min-w-[300px] snap-start shrink-0">
+                    <div class="flex justify-between items-center mb-3">
+                        <span
+                            class="text-[10px] text-muted uppercase tracking-widest font-semibold flex items-center gap-1">
+                            <iconify-icon icon="solar:flag-linear"></iconify-icon> Serie A
+                        </span>
+                        <span class="text-xs text-white/50 bg-white/5 px-2 py-0.5 rounded font-mono font-medium">
+                            FT
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2 font-mono tabular-nums text-lg font-medium">
+                        <div class="flex justify-between items-center text-muted">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-black border border-white/20 rounded-full flex items-center justify-center text-[8px] text-white font-display">
+                                    JUV</div>
+                                <span class="font-sans font-semibold text-base">Juventus</span>
+                            </div>
+                            <span>1</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-[8px] text-white font-display">
+                                    NAP</div>
+                                <span class="font-sans font-semibold text-base">Napoli</span>
+                            </div>
+                            <span>2</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Match Card 4 (Live) -->
+                <div
+                    class="card-surface rounded-xl p-4 min-w-[280px] md:min-w-[300px] snap-start shrink-0 cursor-pointer hover:border-white/20 transition-colors">
+                    <div class="flex justify-between items-center mb-3">
+                        <span
+                            class="text-[10px] text-muted uppercase tracking-widest font-semibold flex items-center gap-1">
+                            <iconify-icon icon="solar:flag-linear"></iconify-icon> Bundesliga
+                        </span>
+                        <span
+                            class="text-xs accent-green bg-[#00FF87]/10 px-2 py-0.5 rounded flex items-center gap-1 font-mono font-semibold">
+                            <span class="w-1.5 h-1.5 bg-accent-green rounded-full animate-pulse"></span>45'
+                        </span>
+                    </div>
+                    <div class="flex flex-col gap-2 font-mono tabular-nums text-lg font-medium">
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-red-600 rounded-full flex items-center justify-center text-[8px] text-white font-display">
+                                    BAY</div>
+                                <span class="font-sans font-semibold text-base">Bayern</span>
+                            </div>
+                            <span>1</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[8px] text-black font-display">
+                                    BVB</div>
+                                <span class="font-sans font-semibold text-base">Dortmund</span>
+                            </div>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hero Editorial Section -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+
+            <!-- Main Story (Col 8) -->
+            <div
+                class="lg:col-span-8 group relative rounded-2xl overflow-hidden min-h-[400px] md:min-h-[500px] cursor-pointer">
+                <!-- Fallback background if image fails -->
+                <div class="absolute inset-0 bg-[#1A1D29]"></div>
+                <!-- Image placeholder using unsplash -->
+                <img src="https://i.pinimg.com/736x/bf/36/c3/bf36c3eac6ba349ca0d07aad8880383d.jpg"
+                    alt="Hero Story"
+                    class="absolute inset-0 w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:scale-105 transition-transform duration-700 ease-out">
+                <div class="absolute inset-0 hero-gradient"></div>
+
+                <div class="absolute bottom-0 left-0 w-full p-6 md:p-10 flex flex-col gap-4">
+                    <div class="flex items-center gap-3">
+                        <span
+                            class="bg-accent-red text-white text-[10px] font-semibold tracking-widest uppercase px-3 py-1 rounded-full">Exclusive</span>
+                        <span class="text-xs text-white/70 font-mono">Just Now</span>
+                    </div>
+                    <h1
+                        class="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight leading-[0.9] text-white group-hover:text-accent-green transition-colors w-full md:w-4/5">
+                        THE £100M MOVE: MADRID PREPARE RECORD BID FOR PREMIER LEAGUE STAR
+                    </h1>
+                    <p class="text-sm md:text-base text-white/80 max-w-2xl mt-2 line-clamp-2 md:line-clamp-none">
+                        Exclusive sources confirm that negotiations have reached an advanced stage, with the player's
+                        representatives spotted in the Spanish capital late Tuesday evening.
+                    </p>
+                    <div class="flex items-center gap-4 mt-2">
+                        <span class="text-xs font-medium text-white flex items-center gap-2">
+                            <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center"><iconify-icon
+                                    icon="solar:pen-linear" class="text-xs"></iconify-icon></div>
+                            David Ornstein
+                        </span>
+                        <span class="text-xs text-muted flex items-center gap-1"><iconify-icon
+                                icon="solar:clock-circle-linear"></iconify-icon> 4 min read</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary Stories (Col 4) -->
+            <div class="lg:col-span-4 flex flex-col gap-4 md:gap-6">
+                <!-- Sub Story 1 -->
+                <div
+                    class="card-surface rounded-2xl p-5 flex flex-col justify-between h-full group cursor-pointer hover:bg-[#1E2130] transition-colors relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-accent-green/5 rounded-full blur-3xl -mr-10 -mt-10">
+                    </div>
+                    <div class="relative z-10 flex flex-col gap-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] text-muted tracking-widest uppercase font-semibold">Tactical
+                                Analysis</span>
+<iconify-icon icon="solar:bookmark-linear"
+                                class="text-muted hover:text-white"></iconify-icon>
+                        </div>
+                        <h3
+                            class="font-display text-2xl tracking-tight leading-none group-hover:text-accent-green transition-colors">
+                            HOW THE FALSE NINE IS EVOLVING IN MODERN EUROPEAN COMPETITIONS
+                        </h3>
+                        <p class="text-xs text-muted line-clamp-2 mt-1">A deep dive into the tactical shifts seen in
+                            this season's Champions League knockout stages.</p>
+                    </div>
+                    <div class="flex items-center justify-between mt-6 relative z-10">
+                        <span class="text-xs text-white/70 font-mono">2 hrs ago</span>
+                        <div
+                            class="flex items-center gap-1 text-xs font-semibold text-accent-green uppercase tracking-wider">
+                            Read <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sub Story 2 -->
+                <div
+                    class="card-surface rounded-2xl p-5 flex flex-col justify-between h-full group cursor-pointer hover:bg-[#1E2130] transition-colors">
+                    <div class="flex flex-col gap-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] text-muted tracking-widest uppercase font-semibold">Injuries</span>
+                        </div>
+                        <h3
+                            class="font-display text-2xl tracking-tight leading-none group-hover:text-accent-red transition-colors">
+                            STAR STRIKER RULED OUT FOR REMAINDER OF THE SEASON WITH ACL TEAR
+                        </h3>
+                    </div>
+                    <div class="flex items-center justify-between mt-6">
+                        <span class="text-xs text-white/70 font-mono">5 hrs ago</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Layout: Left Content (News/Transfers) + Right Sidebar (Stats) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+
+            <!-- Main Content Area -->
+            <div class="lg:col-span-8 flex flex-col gap-10">
+
+                <!-- Latest News Feed -->
+                <section>
+                    <div
+                        class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4 mb-6">
+                        <h2 class="font-display text-2xl tracking-tight uppercase">Latest Stories</h2>
+                        <!-- Tabs -->
+                        <div class="flex items-center gap-4 overflow-x-auto scrollbar-hide text-sm font-medium">
+                            <button class="text-white whitespace-nowrap bg-white/10 px-3 py-1 rounded-full">All
+                                News</button>
+                            <button class="text-muted hover:text-white whitespace-nowrap transition-colors">Premier
+                                League</button>
+                            <button class="text-muted hover:text-white whitespace-nowrap transition-colors">La
+                                Liga</button>
+                            <button
+                                class="text-muted hover:text-white whitespace-nowrap transition-colors">Transfers</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- News Card 1 -->
+                        <div class="group cursor-pointer flex flex-col gap-3">
+                            <div class="w-full aspect-[16/9] bg-[#1A1D29] rounded-xl overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?q=80&amp;w=600&amp;auto=format&amp;fit=crop"
+                                    class="w-full h-full object-cover mix-blend-luminosity opacity-70 group-hover:scale-105 transition-transform duration-500"
+                                    alt="News">
+                                <div
+                                    class="absolute top-2 left-2 bg-black/60 backdrop-blur text-[10px] font-semibold px-2 py-1 rounded text-white uppercase tracking-wider">
+                                    Club News</div>
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-display text-xl tracking-tight leading-tight group-hover:text-accent-green transition-colors">
+                                    TEN HAG FACES CRUCIAL BOARD MEETING AFTER DERBY DEFEAT</h4>
+                                <div class="flex items-center gap-3 mt-2 text-xs text-muted">
+                                    <span class="font-mono">Yesterday</span>
+                                    <span>•</span>
+                                    <span class="flex items-center gap-1"><iconify-icon
+                                            icon="solar:chat-line-linear"></iconify-icon> 245</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- News Card 2 -->
+                        <div class="group cursor-pointer flex flex-col gap-3">
+                            <div class="w-full aspect-[16/9] bg-[#1A1D29] rounded-xl overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1508344928928-7137b29de216?q=80&amp;w=600&amp;auto=format&amp;fit=crop"
+                                    class="w-full h-full object-cover mix-blend-luminosity opacity-70 group-hover:scale-105 transition-transform duration-500"
+                                    alt="News">
+                                <div
+                                    class="absolute top-2 left-2 bg-black/60 backdrop-blur text-[10px] font-semibold px-2 py-1 rounded text-white uppercase tracking-wider">
+                                    International</div>
+                            </div>
+                            <div>
+                                <h4
+                                    class="font-display text-xl tracking-tight leading-tight group-hover:text-accent-green transition-colors">
+                                    NEW FORMAT ANNOUNCED FOR EXPANDED WORLD CUP 2026</h4>
+                                <div class="flex items-center gap-3 mt-2 text-xs text-muted">
+                                    <span class="font-mono">Yesterday</span>
+                                    <span>•</span>
+                                    <span class="flex items-center gap-1"><iconify-icon
+                                            icon="solar:chat-line-linear"></iconify-icon> 120</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Transfer Hub Teaser -->
+                <section class="card-surface rounded-2xl p-1">
+                    <div class="bg-gradient-to-r from-[#1A1D29] to-[#0A0E1A] rounded-xl p-5 md:p-6 flex flex-col gap-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-accent-green/20 flex items-center justify-center text-accent-green">
+                                    <iconify-icon icon="solar:transfer-horizontal-linear"
+                                        class="text-xl"></iconify-icon>
+                                </div>
+                                <div>
+                                    <h2 class="font-display text-2xl tracking-tight uppercase">Transfer Hub</h2>
+                                    <p class="text-xs text-muted">Live updates &amp; confirmed deals</p>
+                                </div>
+                            </div>
+                            <button
+                                class="text-xs font-semibold uppercase tracking-wider border border-white/20 px-3 py-1.5 rounded hover:bg-white hover:text-black transition-colors">
+                                View All
+                            </button>
+                        </div>
+
+                        <!-- Transfer List -->
+                        <div class="flex flex-col gap-2">
+                            <!-- Transfer Card 1 (Done Deal) -->
+                            <div
+                                class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors group cursor-pointer">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-[#2A2E40] overflow-hidden flex-shrink-0">
+                                        <!-- Placeholder Avatar -->
+                                        <div class="w-full h-full flex items-center justify-center text-muted">
+                                            <iconify-icon icon="solar:user-linear"></iconify-icon></div>
+                                    </div>
+                                    <div>
+                                        <h5
+                                            class="text-sm font-semibold group-hover:text-accent-green transition-colors">
+                                            J. Bellingham</h5>
+                                        <div class="flex items-center gap-2 text-xs text-muted mt-0.5">
+                                            <span>BVB</span>
+                                            <iconify-icon icon="solar:arrow-right-linear"
+                                                class="text-[10px]"></iconify-icon>
+                                            <span class="text-white">RMA</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end gap-1">
+                                    <span
+                                        class="bg-white/10 text-white text-[10px] px-2 py-0.5 rounded font-mono">€103M</span>
+                                    <span
+                                        class="text-[9px] text-accent-green font-semibold uppercase tracking-widest flex items-center gap-1"><iconify-icon
+                                            icon="solar:check-circle-linear"></iconify-icon> Done Deal</span>
+                                </div>
+                            </div>
+                            <div class="h-px w-full bg-white/5"></div>
+
+                            <!-- Transfer Card 2 (Rumour) -->
+                            <div
+                                class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors group cursor-pointer">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-[#2A2E40] overflow-hidden flex-shrink-0">
+                                        <div class="w-full h-full flex items-center justify-center text-muted">
+                                            <iconify-icon icon="solar:user-linear"></iconify-icon></div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-semibold group-hover:text-accent-red transition-colors">
+                                            V. Osimhen</h5>
+                                        <div class="flex items-center gap-2 text-xs text-muted mt-0.5">
+                                            <span>GAL</span>
+                                            <iconify-icon icon="solar:arrow-right-linear"
+                                                class="text-[10px]"></iconify-icon>
+                                            <span class="text-white">GAL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end gap-1 w-24">
+                                    <span
+                                        class="text-[9px] text-accent-red font-semibold uppercase tracking-widest flex items-center gap-1"><iconify-icon
+                                            icon="solar:fire-linear"></iconify-icon> Hot Rumour</span>
+                                    <!-- Confidence bar -->
+                                    <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden mt-1">
+                                        <div class="h-full bg-accent-red w-[85%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors group cursor-pointer">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-full bg-[#2A2E40] overflow-hidden flex-shrink-0">
+                                        <div class="w-full h-full flex items-center justify-center text-muted">
+                                            <iconify-icon icon="solar:user-linear"></iconify-icon></div>
+                                    </div>
+                                    <div>
+                                        <h5 class="text-sm font-semibold group-hover:text-accent-red transition-colors">
+                                            V. Osimhen</h5>
+                                        <div class="flex items-center gap-2 text-xs text-muted mt-0.5">
+                                            <span>GAL</span>
+                                            <iconify-icon icon="solar:arrow-right-linear"
+                                                class="text-[10px]"></iconify-icon>
+                                            <span class="text-white">GAL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-end gap-1 w-24">
+                                    <span
+                                        class="text-[9px] text-accent-red font-semibold uppercase tracking-widest flex items-center gap-1"><iconify-icon
+                                            icon="solar:fire-linear"></iconify-icon> Hot Rumour</span>
+                                    <!-- Confidence bar -->
+                                    <div class="w-full h-1 bg-white/10 rounded-full overflow-hidden mt-1">
+                                        <div class="h-full bg-accent-red w-[85%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Sidebar (Stats, Data, Highlights) -->
+            <div class="lg:col-span-4 flex flex-col gap-6">
+
+                <!-- Player of the Week (Editorial Card) -->
+                <div
+                    class="relative bg-[#1A1D29] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-900/40 to-black/80 z-0"></div>
+                    <!-- Abstract player shape placeholder -->
+                    <div class="absolute bottom-0 right-[-10%] w-[120%] h-[120%] opacity-20 pointer-events-none z-0 mix-blend-overlay"
+                        style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 16px 16px;">
+                    </div>
+
+                    <div class="relative z-10 p-6 flex flex-col h-full min-h-[320px]">
+                        <span class="text-[10px] text-accent-green font-semibold uppercase tracking-widest mb-1">Player
+                            of the Week</span>
+                        <h3 class="font-display text-4xl tracking-tight leading-none uppercase mt-2">E. Haaland</h3>
+                        <span class="text-xs text-muted font-mono mt-1">Manchester City</span>
+
+                        <div class="mt-auto pt-8 flex flex-col gap-3">
+                            <!-- Stat Row -->
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                <span class="text-xs text-muted uppercase tracking-wider font-medium">Goals</span>
+                                <span class="font-mono text-lg font-semibold tabular-nums text-white">3</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b border-white/10 pb-2">
+                                <span class="text-xs text-muted uppercase tracking-wider font-medium">xG
+                                    (Expected)</span>
+                                <span class="font-mono text-lg font-semibold tabular-nums text-white">2.4</span>
+                            </div>
+                            <div class="flex justify-between items-center pb-1">
+                                <span class="text-xs text-muted uppercase tracking-wider font-medium">Rating</span>
+                                <div
+                                    class="flex items-center gap-1 bg-accent-green text-black px-2 py-0.5 rounded text-sm font-mono font-semibold">
+                                    9.8
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Standings Widget -->
+                <div class="card-surface rounded-2xl p-5">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-display text-xl tracking-tight uppercase">Standings</h3>
+                        <button
+                            class="text-[10px] uppercase tracking-widest text-muted hover:text-white flex items-center gap-1 font-semibold">PL
+                            <iconify-icon icon="solar:alt-arrow-down-linear"></iconify-icon></button>
+                    </div>
+
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-[10px] text-muted uppercase tracking-wider border-b border-white/10">
+                                <th class="pb-2 font-medium w-6">#</th>
+                                <th class="pb-2 font-medium">Club</th>
+                                <th class="pb-2 font-medium text-center w-8">P</th>
+                                <th class="pb-2 font-medium text-center w-8">GD</th>
+                                <th class="pb-2 font-medium text-right w-8">Pts</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm font-mono tabular-nums">
+                            <!-- Row 1 -->
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors group cursor-pointer">
+                                <td class="py-2.5 text-xs text-muted group-hover:text-white">1</td>
+                                <td class="py-2.5 font-sans font-medium flex items-center gap-2">
+                                    <div
+                                        class="w-4 h-4 rounded-full bg-white text-black flex items-center justify-center text-[6px] font-display">
+                                        LIV</div> <span class="truncate max-w-[100px]">Liverpool</span>
+                                </td>
+                                <td class="py-2.5 text-center text-xs text-muted">28</td>
+                                <td class="py-2.5 text-center text-xs">+39</td>
+                                <td class="py-2.5 text-right font-semibold text-white">64</td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors group cursor-pointer">
+                                <td class="py-2.5 text-xs text-muted group-hover:text-white">2</td>
+                                <td class="py-2.5 font-sans font-medium flex items-center gap-2">
+                                    <div
+                                        class="w-4 h-4 rounded-full bg-blue-500 text-white flex items-center justify-center text-[6px] font-display">
+                                        MCI</div> <span class="truncate max-w-[100px]">Man City</span>
+                                </td>
+                                <td class="py-2.5 text-center text-xs text-muted">28</td>
+                                <td class="py-2.5 text-center text-xs">+35</td>
+                                <td class="py-2.5 text-right font-semibold text-white">63</td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="border-b border-white/5 hover:bg-white/5 transition-colors group cursor-pointer">
+                                <td class="py-2.5 text-xs text-muted group-hover:text-white">3</td>
+                                <td class="py-2.5 font-sans font-medium flex items-center gap-2">
+                                    <div
+                                        class="w-4 h-4 rounded-full bg-red-600 text-white flex items-center justify-center text-[6px] font-display">
+                                        ARS</div> <span class="truncate max-w-[100px]">Arsenal</span>
+                                </td>
+                                <td class="py-2.5 text-center text-xs text-muted">28</td>
+                                <td class="py-2.5 text-center text-xs">+45</td>
+                                <td class="py-2.5 text-right font-semibold text-white">61</td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="hover:bg-white/5 transition-colors group cursor-pointer">
+                                <td class="py-2.5 text-xs text-muted group-hover:text-white">4</td>
+                                <td class="py-2.5 font-sans font-medium flex items-center gap-2">
+                                    <div
+                                        class="w-4 h-4 rounded-full bg-white text-blue-900 flex items-center justify-center text-[6px] font-display">
+                                        TOT</div> <span class="truncate max-w-[100px]">Tottenham</span>
+                                </td>
+                                <td class="py-2.5 text-center text-xs text-muted">27</td>
+                                <td class="py-2.5 text-center text-xs">+18</td>
+                                <td class="py-2.5 text-right font-semibold text-white">53</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="mt-4 pt-3 border-t border-white/10 text-center">
+                        <a href="#"
+                            class="text-xs text-muted hover:text-white uppercase tracking-widest font-semibold transition-colors">Full
+                            Table</a>
+                    </div>
+                </div>
+
+                <!-- Money League / Wages Teaser -->
+                <div class="card-surface rounded-2xl p-5">
+                    <h3 class="font-display text-xl tracking-tight uppercase mb-1">The Money League</h3>
+                    <p class="text-[10px] text-muted uppercase tracking-widest mb-4">Top Weekly Earners (Est.)</p>
+
+                    <div class="flex flex-col gap-3">
+                        <!-- Earner 1 -->
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-muted font-mono w-4">1</span>
+                            <div class="flex-1 flex flex-col gap-1">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="font-semibold truncate">C. Ronaldo</span>
+                                    <span class="font-mono text-accent-green">£4.4M</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-accent-green w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earner 2 -->
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-muted font-mono w-4">2</span>
+                            <div class="flex-1 flex flex-col gap-1">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="font-semibold truncate">Neymar Jr</span>
+                                    <span class="font-mono text-accent-green/80">£2.5M</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-accent-green/80 w-[75%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Earner 3 -->
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-muted font-mono w-4">3</span>
+                            <div class="flex-1 flex flex-col gap-1">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="font-semibold truncate">K. Mbappe</span>
+                                    <span class="font-mono text-white/80">£1.2M</span>
+                                </div>
+                                <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                                    <div class="h-full bg-white/40 w-[35%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Newsletter Banner -->
+        <section
+            class="mt-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-[#1E2130] to-[#0A0E1A] border border-white/10 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div
+                class="absolute -right-20 -top-20 w-64 h-64 bg-accent-green/10 rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <div class="flex flex-col gap-2 relative z-10 w-full md:w-1/2">
+                <h2 class="font-display text-3xl md:text-4xl tracking-tight uppercase">Never Miss A Transfer</h2>
+                <p class="text-sm text-muted">Get breaking news, exclusive rumors, and deep-dive analytics delivered
+                    straight to your inbox daily.</p>
+                <div class="flex items-center gap-4 mt-2">
+                    <span
+                        class="text-[10px] text-muted uppercase tracking-widest font-semibold flex items-center gap-1"><iconify-icon
+                            icon="solar:check-circle-linear" class="text-accent-green"></iconify-icon> Ad-free</span>
+                    <span
+                        class="text-[10px] text-muted uppercase tracking-widest font-semibold flex items-center gap-1"><iconify-icon
+                            icon="solar:check-circle-linear" class="text-accent-green"></iconify-icon> Expert
+                        Analysis</span>
+                </div>
+            </div>
+
+            <div class="relative z-10 w-full md:w-[400px]">
+                <form class="flex flex-col sm:flex-row gap-2 w-full">
+                    <input type="email" placeholder="Enter your email address"
+                        class="w-full bg-black/50 border border-white/20 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-accent-green transition-colors text-white placeholder:text-muted/50"
+                        required="">
+                    <button type="submit"
+                        class="bg-white text-black font-semibold text-sm px-6 py-3 rounded-lg hover:bg-accent-green transition-colors whitespace-nowrap uppercase tracking-wider">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 bg-[#0A0E1A] pt-12 pb-8 mt-12">
+        <div class="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-8 flex flex-col gap-10">
+
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8">
+                <!-- Brand -->
+                <div class="flex flex-col gap-4 max-w-sm">
+                    <a href="#" class="font-display text-3xl tracking-tighter uppercase flex items-center gap-1">
+                        STRIKER
+                        <span class="w-2.5 h-2.5 rounded-full bg-accent-green mb-1"></span>
+                    </a>
+                    <p class="text-sm text-muted">The world's premium football intelligence hub. Combining bold
+                        editorial with elite data analytics.</p>
+                </div>
+
+                <!-- Links Grid -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 md:gap-12 w-full md:w-auto text-sm">
+                    <div class="flex flex-col gap-3">
+                        <span
+                            class="text-[10px] font-semibold text-white/50 uppercase tracking-widest mb-1">Content</span>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Latest News</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Transfer Hub</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Editorials</a>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <span class="text-[10px] font-semibold text-white/50 uppercase tracking-widest mb-1">Data</span>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Live Scores</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Player Stats</a>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <span
+                            class="text-[10px] font-semibold text-white/50 uppercase tracking-widest mb-1">Directory</span>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Clubs A-Z</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Competitions</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Records</a>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <span
+                            class="text-[10px] font-semibold text-white/50 uppercase tracking-widest mb-1">Company</span>
+                        <a href="#" class="text-muted hover:text-white transition-colors">About Us</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Contact</a>
+                        <a href="#" class="text-muted hover:text-white transition-colors">Careers</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full h-px bg-white/10"></div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted">
+                <p>© 2024 STRIKER Media Ltd. All rights reserved.</p>
+
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                    <a href="#" class="hover:text-white transition-colors">Cookie Settings</a>
+                </div>
+
+                <!-- Socials -->
+                <div class="flex items-center gap-4 text-lg">
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon
+                            icon="solar:twitter-linear"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon
+                            icon="solar:camera-linear"></iconify-icon></a>
+                    <a href="#" class="hover:text-white transition-colors"><iconify-icon
+                            icon="solar:play-circle-linear"></iconify-icon></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
